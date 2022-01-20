@@ -24,7 +24,7 @@ const submitForm = () => {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: encode({
       'form-name': 'feedback',
-      ...data
+      ...formData
     })
   })
     .then(() => {
