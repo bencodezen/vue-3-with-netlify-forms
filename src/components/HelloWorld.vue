@@ -20,7 +20,7 @@ document.title = 'Vue 3 + Netlify Forms Demo'
 <template>
   <h1>Vue 3 + Netlify Forms</h1>
 
-  <form class="feedback-form" name="feedback" netlify>
+  <form class="feedback-form" name="feedback" method="post">
     <input type="hidden" name="form-name" value="feedback" />
 
     <div class="input-wrapper">
