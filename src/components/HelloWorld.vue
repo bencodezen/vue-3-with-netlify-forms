@@ -15,7 +15,7 @@ const data = reactive({
 <template>
   <h1>Vue 3 + Netlify Forms</h1>
 
-  <form class="feedback-form">
+  <form class="feedback-form" name="feedback" netlify>
     <div class="input-wrapper">
       <label for="name">Name</label>
       <input id="name" v-model="data.name" type="text" />
@@ -31,7 +31,7 @@ const data = reactive({
       <textarea id="message" v-model="data.message"></textarea>
     </div>
 
-    <button type="submit" @click="submit">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 </template>
 
