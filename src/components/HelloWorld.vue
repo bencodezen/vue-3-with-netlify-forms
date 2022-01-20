@@ -31,7 +31,7 @@ const submitForm = () => {
       formData.response = '✅ Your response was successfully submitted!'
     })
     .catch(error => {
-      formData.response = `❌ There was an error submitting your response: ${error.message}`
+      formData.response = `❌ There was an error submitting your response: ${error.message}. Please refresh to try again.`
     })
 }
 </script>
