@@ -1,14 +1,15 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
 defineProps({
   msg: String
 })
 
-const data = reactive({
+const formData = reactive({
   name: '',
   email: '',
-  message: ''
+  message: '',
+  response: ''
 })
 
 const encode = data => {
@@ -26,22 +27,29 @@ const submitForm = () => {
       ...data
     })
   })
-    .then(() => console.log('Form successfully submitted'))
-    .catch(error => alert(error))
+    .then(() => {
+      formData.response = '✅ Your response was successfully submitted!'
+    })
+    .catch(error => {
+      formData.response = `❌ There was an error submitting your response: ${error.message}`
+    })
 }
 </script>
 
 <template>
   <h1>Vue 3 + Netlify Forms</h1>
 
-  <form class="feedback-form" name="feedback" @submit.prevent>
+  <section v-if="formData.response" class="notification">
+    <h2>{{ formData.response }}</h2>
+  </section>
+  <form v-else class="feedback-form" name="feedback" @submit.prevent>
     <input type="hidden" name="form-name" value="feedback" />
 
     <div class="input-wrapper">
       <label for="name">Name</label>
       <input
         id="name"
-        v-model="data.name"
+        v-model="formData.name"
         type="text"
         placeholder="Your Name"
       />
@@ -51,7 +59,7 @@ const submitForm = () => {
       <label for="email">Email</label>
       <input
         id="email"
-        v-model="data.email"
+        v-model="formData.email"
         type="email"
         placeholder="yourname@domain.extension"
       />
@@ -61,7 +69,7 @@ const submitForm = () => {
       <label for="message">Message</label>
       <textarea
         id="message"
-        v-model="data.message"
+        v-model="formData.message"
         placeholder="What would you like to share?"
       />
     </div>
@@ -108,7 +116,11 @@ a {
   font-size: 0.9rem;
 }
 
-button {
-  padding: 8px 16px;
+.notification {
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 20px 0;
+  max-width: 600px;
+  margin: 0 auto;
 }
 </style>
