@@ -16,6 +16,8 @@ const data = reactive({
   <h1>Vue 3 + Netlify Forms</h1>
 
   <form class="feedback-form" name="feedback" netlify>
+    <input type="hidden" name="form-name" value="feedback" />
+
     <div class="input-wrapper">
       <label for="name">Name</label>
       <input id="name" v-model="data.name" type="text" />
