@@ -11,8 +11,6 @@ const data = reactive({
   message: ''
 })
 
-const elFeedbackForm = ref(null)
-
 const encode = data => {
   return Object.keys(data)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
@@ -36,12 +34,7 @@ const submitForm = () => {
 <template>
   <h1>Vue 3 + Netlify Forms</h1>
 
-  <form
-    class="feedback-form"
-    name="feedback"
-    ref="elFeedbackForm"
-    @submit.prevent
-  >
+  <form class="feedback-form" name="feedback" @submit.prevent>
     <input type="hidden" name="form-name" value="feedback" />
 
     <div class="input-wrapper">
