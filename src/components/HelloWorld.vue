@@ -1,40 +1,68 @@
 <script setup>
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
 defineProps({
   msg: String
 })
 
-const count = ref(0)
+const data = reactive({
+  name: '',
+  email: '',
+  message: ''
+})
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <h1>Vue 3 + Netlify Forms</h1>
 
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
+  <form class="feedback-form">
+    <div class="input-wrapper">
+      <label for="name">Name</label>
+      <input id="name" v-model="data.name" type="text" />
+    </div>
 
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Documentation
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-  </p>
+    <div class="input-wrapper">
+      <label for="email">Email</label>
+      <input id="email" v-model="data.email" type="email" />
+    </div>
 
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+    <div class="input-wrapper">
+      <label for="message">Message</label>
+      <textarea id="message" v-model="data.message"></textarea>
+    </div>
+
+    <button type="submit" @click="submit">Submit</button>
+  </form>
 </template>
 
 <style scoped>
 a {
   color: #42b983;
+}
+
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-row-gap: 5px;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.input-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.input-wrapper input {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.input-wrapper textarea {
+  height: 100px;
 }
 </style>
