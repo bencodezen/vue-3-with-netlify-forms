@@ -10,12 +10,17 @@ const data = reactive({
   email: '',
   message: ''
 })
+
+/**
+ * Lifecycle hooks
+ */
+document.title = 'Vue 3 + Netlify Forms Demo'
 </script>
 
 <template>
   <h1>Vue 3 + Netlify Forms</h1>
 
-  <form class="feedback-form" name="feedback" netlify>
+  <form class="feedback-form" method="post" name="feedback" netlify>
     <input type="hidden" name="form-name" value="feedback" />
 
     <div class="input-wrapper">
