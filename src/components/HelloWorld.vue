@@ -1,26 +1,41 @@
 <script setup>
-import { reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 
 defineProps({
   msg: String
 })
 
 const data = reactive({
-  name: '',
-  email: '',
-  message: ''
+  name: 'Ben',
+  email: 'ben@bencodezen.io',
+  message: 'Test Message'
 })
 
-/**
- * Lifecycle hooks
- */
-document.title = 'Vue 3 + Netlify Forms Demo'
+const elFeedbackForm = ref(null)
+
+const submitForm = () => {
+  const formData = new FormData(elFeedbackForm.value)
+  const fetchBody = new URLSearchParams(formData).toString()
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: fetchBody
+  })
+    .then(() => console.log('Form successfully submitted'))
+    .catch(error => alert(error))
+}
 </script>
 
 <template>
   <h1>Vue 3 + Netlify Forms</h1>
 
-  <form class="feedback-form" name="feedback" method="post">
+  <form
+    class="feedback-form"
+    name="feedback"
+    ref="elFeedbackForm"
+    @submit.prevent
+  >
     <input type="hidden" name="form-name" value="feedback" />
 
     <div class="input-wrapper">
@@ -38,7 +53,7 @@ document.title = 'Vue 3 + Netlify Forms Demo'
       <textarea id="message" v-model="data.message"></textarea>
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit" @click="submitForm">Submit</button>
   </form>
 </template>
 
