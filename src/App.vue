@@ -5,11 +5,34 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld />
+  <div id="wrapper">
+    <main id="content">
+      <img alt="Vue logo" src="./assets/logo.png" style="max-width: 300px" />
+      <HelloWorld />
+    </main>
+    <footer id="footer">
+      <a href="https://github.com/bencodezen/vue-3-with-netlify-forms"
+        >GitHub Repo</a
+      >
+      | Deployed with
+      <a href="https://www.netlify.com/">Netlify</a>
+    </footer>
+  </div>
 </template>
 
 <style>
+*,
+html,
+body {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --primaryFont: Avenir, Helvetica, Arial, sans-serif;
 }
@@ -20,7 +43,27 @@ import HelloWorld from './components/HelloWorld.vue'
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#content {
+  flex: 1;
+  margin-top: 30px;
+}
+
+#footer {
+  padding: 30px;
+}
+
+#wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  color: #42b983;
 }
 
 button {

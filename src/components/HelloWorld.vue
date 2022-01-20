@@ -1,10 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
 
-defineProps({
-  msg: String
-})
-
 const formData = reactive({
   name: '',
   email: '',
@@ -79,10 +75,6 @@ const submitForm = () => {
 </template>
 
 <style scoped>
-a {
-  color: #42b983;
-}
-
 .feedback-form {
   max-width: 600px;
   margin: 0 auto;
