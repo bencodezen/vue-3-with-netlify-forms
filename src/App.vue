@@ -10,8 +10,12 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style>
+:root {
+  --primaryFont: Avenir, Helvetica, Arial, sans-serif;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--primaryFont);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
